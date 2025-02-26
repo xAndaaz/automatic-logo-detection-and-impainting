@@ -1,0 +1,39 @@
+logo_removal_project/
+├── configs/                    # Configuration files (e.g., model params, paths)
+│   ├── detection_config.yaml   # YOLOv11m settings (weights, thresholds)
+│   └── inpainting_config.yaml  # LaMa settings (weights, mask dilation)
+├── data/                       # Dataset and preprocessing logic
+│   ├── datasets/               # Raw and processed data
+│   │   ├── flickrlogos32/      # FlickrLogos-32 dataset (images, annotations)
+│   │   └── processed/          # Preprocessed images/masks (optional caching)
+│   ├── __init__.py
+│   └── dataset_loader.py       # Loads and preprocesses FlickrLogos-32
+├── src/                        # Core source code following SOLID
+│   ├── detection/              # Detection module (YOLOv11m)
+│   │   ├── __init__.py
+│   │   ├── detector.py         # Abstract interface for detectors
+│   │   └── yolov11_detector.py # YOLOv11m implementation
+│   ├── inpainting/             # Inpainting module (LaMa)
+│   │   ├── __init__.py
+│   │   ├── inpainter.py        # Abstract interface for inpainters
+│   │   └── lama_inpainter.py   # LaMa implementation
+│   ├── pipeline/               # Orchestrates detection + inpainting
+│   │   ├── __init__.py
+│   │   └── logo_remover.py     # Main pipeline class
+│   ├── utils/                  # Helper functions (SOLID utilities)
+│   │   ├── __init__.py
+│   │   ├── image_utils.py      # Image loading, saving, mask creation
+│   │   └── logging.py          # Logging setup
+│   └── __init__.py
+├── tests/                      # Unit tests for SOLID compliance
+│   ├── __init__.py
+│   ├── test_detector.py        # Test detection module
+│   ├── test_inpainter.py       # Test inpainting module
+│   └── test_pipeline.py        # Test full pipeline
+├── scripts/                    # Executable scripts
+│   ├── train_detector.py       # Fine-tune YOLOv11m on FlickrLogos-32
+│   ├── run_pipeline.py         # Run the full logo removal pipeline
+│   └── evaluate.py             # Evaluate detection/inpainting performance
+├── README.md                   # Project overview, setup instructions
+├── requirements.txt            # Dependencies (e.g., torch, ultralytics, lama)
+└── .gitignore                  # Ignore data, weights, logs, etc.
