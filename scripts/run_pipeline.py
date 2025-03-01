@@ -1,0 +1,32 @@
+import cv2
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from src.detection.yolov11_detector import YOLOv11Detector
+from src.inpainting.lama_inpainter import LaMaInpainter
+from src.pipeline.logo_remover import LogoRemover
+from src.utils.image_utils import load_image, save_image
+
+def main():
+    # Initialize models
+    detector = YOLOv11Detector(
+        weights_path=r"E:\LOGO-detection and removal\models\yolo11m.pt",
+        conf_threshold=0.5
+    )
+    inpainter = LaMaInpainter(
+        weights_path=r"models\lama\big-lama\models\best.ckpt",
+        config_path=r"configs\inpainting_config.yaml"  
+    )
+    remover = LogoRemover(detector, inpainter)
+
+    # Load and process image
+    image = load_image(r"E:\LOGO-detection and removal\data\dataset\FlickrLogos_47\test\000000\000000000.png")
+    result = remover.remove_logos(image)
+    save_image(result, "output/result.jpg")
+    print("Processed image saved to output/result.jpg")
+
+if __name__ == "__main__":
+    main()
+
+
+    
