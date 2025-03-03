@@ -1,6 +1,7 @@
 from src.detection.detector import Detector
 import numpy as np
 from ultralytics import YOLO
+from src.utils.logging import setup_logger
 
 class YOLOv11Detector(Detector):
     def __init__(self, weights_path: str, conf_threshold: float = 0.5):
@@ -10,6 +11,8 @@ class YOLOv11Detector(Detector):
             weights_path: Path to YOLOv11m weights file (e.g., yolov11m.pt).
             conf_threshold: Confidence threshold for detections.
         """
+        self.logger = setup_logger(__name__)
+        self.logger.info("Initializing Yolo11_Detector")
         self.model = YOLO(weights_path)  # Load pre-trained YOLOv11m
         self.conf_threshold = conf_threshold
 
