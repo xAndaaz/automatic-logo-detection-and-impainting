@@ -16,7 +16,7 @@ def main():
     # Initialize models
     logger.info("Initializing YOLOv11 detector")
     detector = YOLOv11Detector(
-        weights_path=r"E:\LOGO-detection and removal\models\yolo11m.pt",
+        weights_path=r"E:\LOGO-detection and removal\runs\train\yolov11_flickrlogos47\weights\best.pt",
         conf_threshold=0.5
     )
     
@@ -31,7 +31,7 @@ def main():
 
     # Load and process image
     logger.info("Loading image from data/flickrlogos32/sample.jpg")
-    image = load_image(r"C:\Users\acer\Downloads\9.jpg")
+    image = load_image(r"E:\LOGO-detection and removal\data\dataset\FlickrLogos_47\test\000001\000001004.png")
     
     logger.info("Running logo removal")
     result = remover.remove_logos(image)
