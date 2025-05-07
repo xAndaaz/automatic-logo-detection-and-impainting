@@ -120,17 +120,7 @@ StreamClear/
 - **End-to-End Latency**: 12.5 ms per image
 - **User Feedback**: Rated 4.4–4.8/5 for accuracy, quality, and usability by 10 content creators.
 
-### Sample Outputs
-Below are examples of the pipeline in action:
-- **HP Logo Removal**:  
-  ![HP Logo Removal](output/hp_result_with_boxes.jpg)  
-  *(Original → Detected → Inpainted)*
 
-- **CocaCola Logo Removal**:  
-  ![CocaCola Logo Removal](output/cocacola_result_with_boxes.jpg)  
-  *(Original → Detected → Inpainted)*
-
----
 
 ## Limitations
 - Struggles with small or occluded logos due to class imbalance in the dataset.
